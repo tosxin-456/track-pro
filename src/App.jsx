@@ -1,0 +1,113 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+
+import LoginPage from "./pages/login";
+import SignupPage from "./pages/signup";
+import DashboardLayout from "./components/dashboard";
+import PlaceholderPage from "./components/placeholder";
+import DashboardOverview from "./pages/dashboard";
+import UserManagement from "./pages/user management";
+
+function App() {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  return (
+    <Router>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+
+        {/* Protected Routes */}
+        {user ? (
+          <Route path="/*" element={<DashboardLayout />}>
+            {/* Redirect default to dashboard overview */}
+            <Route index element={<Navigate to="dashboard" replace />} />
+
+            {/* Dashboard Overview */}
+            <Route path="dashboard" element={<DashboardOverview />} />
+
+            {/* Placeholder Routes */}
+            <Route
+              path="users"
+              element={
+                <UserManagement/>
+              }
+            />
+            <Route
+              path="animals"
+              element={
+                <PlaceholderPage
+                  title="Animal Tracking"
+                  description="Track and manage individual animal profiles and health records"
+                />
+              }
+            />
+            <Route
+              path="health"
+              element={
+                <PlaceholderPage
+                  title="Health Monitoring"
+                  description="Monitor disease surveillance and health trends across regions"
+                />
+              }
+            />
+            <Route
+              path="compliance"
+              element={
+                <PlaceholderPage
+                  title="Compliance Management"
+                  description="Track regulatory compliance and generate audit reports"
+                />
+              }
+            />
+            <Route
+              path="reports"
+              element={
+                <PlaceholderPage
+                  title="Reports & Analytics"
+                  description="Generate detailed reports and insights"
+                />
+              }
+            />
+            <Route
+              path="alerts"
+              element={
+                <PlaceholderPage
+                  title="Alert Management"
+                  description="Manage system alerts and notifications"
+                />
+              }
+            />
+            <Route
+              path="traceability"
+              element={
+                <PlaceholderPage
+                  title="Traceability Chain"
+                  description="Track animals from farm to fork with QR codes"
+                />
+              }
+            />
+            <Route
+              path="settings"
+              element={
+                <PlaceholderPage
+                  title="System Settings"
+                  description="Configure system preferences and user permissions"
+                />
+              }
+            />
+          </Route>
+        ) : (
+          <Route path="/*" element={<Navigate to="/login" replace />} />
+        )}
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
