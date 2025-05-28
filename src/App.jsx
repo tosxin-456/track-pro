@@ -12,6 +12,7 @@ import PlaceholderPage from "./components/placeholder";
 import DashboardOverview from "./pages/dashboard";
 import UserManagement from "./pages/user management";
 import AnimalTracking from "./pages/tracking";
+import HealthMonitoringDashboard from "./pages/monitor";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -38,10 +39,7 @@ function App() {
             <Route
               path="health"
               element={
-                <PlaceholderPage
-                  title="Health Monitoring"
-                  description="Monitor disease surveillance and health trends across regions"
-                />
+                <HealthMonitoringDashboard/>
               }
             />
             <Route
