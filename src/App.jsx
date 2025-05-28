@@ -13,6 +13,8 @@ import DashboardOverview from "./pages/dashboard";
 import UserManagement from "./pages/user management";
 import AnimalTracking from "./pages/tracking";
 import HealthMonitoringDashboard from "./pages/monitor";
+import ComplianceManagement from "./pages/compliance";
+import ReportsAnalytics from "./pages/reports and analytics";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -45,19 +47,13 @@ function App() {
             <Route
               path="compliance"
               element={
-                <PlaceholderPage
-                  title="Compliance Management"
-                  description="Track regulatory compliance and generate audit reports"
-                />
+                <ComplianceManagement />
               }
             />
             <Route
               path="reports"
               element={
-                <PlaceholderPage
-                  title="Reports & Analytics"
-                  description="Generate detailed reports and insights"
-                />
+                <ReportsAnalytics/>
               }
             />
             <Route
