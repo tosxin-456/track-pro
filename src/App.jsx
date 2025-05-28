@@ -11,6 +11,7 @@ import DashboardLayout from "./components/dashboard";
 import PlaceholderPage from "./components/placeholder";
 import DashboardOverview from "./pages/dashboard";
 import UserManagement from "./pages/user management";
+import AnimalTracking from "./pages/tracking";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -32,21 +33,8 @@ function App() {
             <Route path="dashboard" element={<DashboardOverview />} />
 
             {/* Placeholder Routes */}
-            <Route
-              path="users"
-              element={
-                <UserManagement/>
-              }
-            />
-            <Route
-              path="animals"
-              element={
-                <PlaceholderPage
-                  title="Animal Tracking"
-                  description="Track and manage individual animal profiles and health records"
-                />
-              }
-            />
+            <Route path="users" element={<UserManagement />} />
+            <Route path="animals" element={<AnimalTracking />} />
             <Route
               path="health"
               element={
